@@ -1,0 +1,68 @@
+buildscript {
+    ext.kotlin_version = '1.7.10' // Define the Kotlin version globally
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:8.0.2" // Ensure you're using the correct Gradle version
+        // Add other classpath dependencies here if needed
+    }
+}
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+
+
+
+android {
+    namespace = "com.example.carp_demo_v3"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17" // Use a supported Kotlin JVM target
+    }
+
+    defaultConfig {
+        applicationId = "com.example.carp_demo_v3"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // Add your own signing config for the release build.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
